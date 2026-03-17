@@ -1,0 +1,35 @@
+name: Build and Publish to GHCR
+
+# This tells GitHub when to run the robot
+on:
+  push:
+    branches: [ "main", "master" ] # Triggers whenever you push to your main branch
+
+jobs:
+  build-and-push-image:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      # Pull code onto the cloud server
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Log into the GitHub Container Registry securely
+      - name: Log in to the Container registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      # Reads Dockerfile, builds the image, and pushes it to GHCR
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: ghcr.io/alexmote04/tradesim:latest
