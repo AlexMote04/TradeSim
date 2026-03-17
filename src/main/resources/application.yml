@@ -1,0 +1,22 @@
+spring:
+  # Database Connection Properties
+  datasource:
+    url: jdbc:postgresql://localhost:5432/tradesim_db
+    username: tradesim_user
+    password: secretpassword
+    driver-class-name: org.postgresql.Driver
+
+  # JPA / Hibernate Configuration
+  jpa:
+    # We set this to 'validate' because Flyway will manage our schema creation, not Hibernate
+    hibernate:
+      ddl-auto: validate
+    show-sql: true # Great for debugging local queries
+    properties:
+      hibernate:
+        format_sql: true
+
+  # Enable Java 21 Virtual Threads
+  threads:
+    virtual:
+      enabled: true

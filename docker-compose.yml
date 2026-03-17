@@ -1,0 +1,15 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: tradesim-postgres
+    environment:
+      POSTGRES_USER: tradesim_user
+      POSTGRES_PASSWORD: secretpassword
+      POSTGRES_DB: tradesim_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - tradesim-data:/var/lib/postgresql/data
+
+volumes:
+  tradesim-data:
