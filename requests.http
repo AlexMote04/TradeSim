@@ -1,18 +1,18 @@
 ### Register our first trader
-POST http://localhost:8080/api/v1/users/register
+POST http://34.213.103.85:8080/api/v1/users/register
 Content-Type: application/json
 
 {
-  "username": "trader_alex",
-  "email": "alex@tradesim.com"
+  "username": "cloud_trader_alex",
+  "email": "alex.cloud@tradesim.com"
 }
 
 ### Place a BUY Order
-POST http://localhost:8080/api/v1/orders
+POST http://34.213.103.85:8080/api/v1/orders
 Content-Type: application/json
 
 {
-  "accountId": "57df4250-47bb-46e7-b9e7-9fd52b016f88",
+  "accountId": "2ef8c1e4-46da-4026-a184-2ae162d732c6",
   "ticker": "AAPL",
   "side": "BUY",
   "price": 150.00,
